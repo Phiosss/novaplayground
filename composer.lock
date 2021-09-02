@@ -4,8 +4,44 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2d0a4dbad0dc72088b115acf3405246",
+    "content-hash": "325b6147c16e2f9971a1ee099e2feeaf",
     "packages": [
+        {
+            "name": "acme/analytics",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/Analytics",
+                "reference": "85635fca32bd723520ecccf2b8a59b0901f883f9"
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Acme\\Analytics\\CardServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Acme\\Analytics\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova card.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "transport-options": {
+                "relative": true
+            }
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.3",

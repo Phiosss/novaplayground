@@ -7,7 +7,7 @@ use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
-
+use Laravel\Nova\Panel;
 class User extends Resource
 {
     /**
@@ -51,6 +51,7 @@ class User extends Resource
                 ->rules('required', 'max:255'),
 
             Text::make('Email')
+                ->onlyOnForms()
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:users,email')
@@ -60,6 +61,18 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
+
+            //new Panel('Address Information', $this->addressFields()),
+        ];
+    }
+
+    protected function addressFields()
+    {
+        return [
+            Text::make('Address Line 2')->hideFromIndex(),
+            Text::make('City')->hideFromIndex(),
+            Text::make('State')->hideFromIndex(),
+            Text::make('Postal Code')->hideFromIndex(),
         ];
     }
 
